@@ -5,13 +5,14 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SidebarComponent,
+  ],
   imports: [
     CommonModule,
-    SidebarComponent
   ],
   exports:[
-    SidebarComponent
+    SidebarComponent,
   ]
 })
 export class SharedModule { }

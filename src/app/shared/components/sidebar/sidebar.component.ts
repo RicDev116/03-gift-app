@@ -1,14 +1,35 @@
+import { GifsModule } from './../../../gifs/gifs.module';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { GifsService } from '../../../gifs/services/gifs.service';
 
 @Component({
   selector: 'shared-sidebar',
-  standalone: true,
-  imports: [
-    CommonModule,
-  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SidebarComponent { }
+export class SidebarComponent{
+
+  // tags: string[] = [];
+
+  constructor(private gifsService: GifsService){};
+
+  get tags(){
+    // console.log(this.gifsService.tagsHistory);
+    return this.gifsService.tagsHistory;
+  };
+
+  // ngOnInit():void {a
+  //   this.tags = this.gifsService.tagsHistory;
+  //   this.gifsService.tagsHistoryChanged.subscribe((updatedTags: string[]) => {
+  //     this.tags = updatedTags;
+  //     console.log("Hola desde update");
+  //     console.log(this.tags);
+
+  //   });
+  // }
+
+  // ngOnDestroy():void {
+  //   this.gifsService.tagsHistoryChanged.unsubscribe();
+  // }
+}
