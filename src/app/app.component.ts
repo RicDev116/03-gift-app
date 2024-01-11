@@ -1,3 +1,4 @@
+import { provideHttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
@@ -9,7 +10,12 @@ import { GifsModule } from './gifs/gifs.module';
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [CommonModule, RouterOutlet, SharedModule,GifsModule]
+    imports: [
+      CommonModule,
+      RouterOutlet,
+      SharedModule,
+      GifsModule,
+    ],
 })
 export class AppComponent {
   title = 'gift-app';
