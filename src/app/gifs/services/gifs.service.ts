@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Gif, SearchResponse } from '../interfaces/gifs.interfaces';
 
 // const GIPHI_API_KEY = "LtqR03My4fnonnlqVEpAIovP3aLEzeFU";
 
@@ -10,6 +11,8 @@ export class GifsService {
 
   private _giftServiceUrl:string = "https://api.giphy.com/v1/gifs";
   private _apikey:string = "LtqR03My4fnonnlqVEpAIovP3aLEzeFU";
+
+  public gifList: Gif[] = [];
 
   // tagsHistoryChanged = new EventEmitter<string[]>();
 
@@ -40,9 +43,10 @@ export class GifsService {
       .set('limit','10')
       .set('q',tag)
 
-    this.http.get(`${this._giftServiceUrl}/search`,{params})
-      .subscribe(resp => {
-        console.log(resp);
+    this.http.get<SearchResponse>(`${this._giftServiceUrl}/search`,{params})
+      .subscribe( resp => {
+        console.log(resp.data);
+        this.gifList = resp.data;
       });
     // fetch('https://api.giphy.com/v1/gifs/search?api_key=LtqR03My4fnonnlqVEpAIovP3aLEzeFU&q=valorant&limit=10').then(
     //   resp => resp.json()
