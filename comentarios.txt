@@ -1,0 +1,5 @@
+PARA HACER PERSISTENTE LA INFO :
+Local Storage:persistencia a pesar de que se cierre en navegador
+Session Storage: se borra al cerrar el navegador
+cookies: viaja hacia el backend, comunicacion entre frontend y backend , headers de aplicacion
+

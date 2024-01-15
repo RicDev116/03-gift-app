@@ -14,10 +14,14 @@ export class SidebarComponent{
 
   constructor(private gifsService: GifsService){};
 
-  get tags(){
+  get tags():string[] {
     // console.log(this.gifsService.tagsHistory);
     return this.gifsService.tagsHistory;
   };
+
+  searhTag(tag:string){
+    this.gifsService.searchTag(tag);
+  }
 
   // ngOnInit():void {a
   //   this.tags = this.gifsService.tagsHistory;
