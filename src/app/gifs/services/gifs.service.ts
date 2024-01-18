@@ -16,7 +16,10 @@ export class GifsService {
 
   // tagsHistoryChanged = new EventEmitter<string[]>();
 
-  constructor(private http:HttpClient) { };
+  constructor(private http:HttpClient) {
+    this.loadLocalStorage();
+    this.loadGifsFromFirstTagHistory();
+   };
 
   get tagsHistory(){
     return [...this._tagsHistory];
@@ -31,6 +34,7 @@ export class GifsService {
     }
     this._tagsHistory.unshift(tag);
     this._tagsHistory = this._tagsHistory.splice(0,10);
+    this.saveLocalStorage();
   }
 
 
@@ -55,6 +59,21 @@ export class GifsService {
     // );
     // this.tagsHistoryChanged.emit(this._tagsHistory);
     // console.log(this._tagsHistory);
+  }
+
+  private saveLocalStorage():void{
+    localStorage.setItem('history',JSON.stringify(this._tagsHistory));
+  }
+
+  private loadLocalStorage():void{
+    if(!localStorage.getItem('history')) return;
+    this._tagsHistory =  JSON.parse(localStorage.getItem('history')!);
+  }
+
+  public loadGifsFromFirstTagHistory(){
+    if((this._tagsHistory[0] === undefined) == false ){
+      this.searchTag(this._tagsHistory[0]);
+    }
   }
 
 

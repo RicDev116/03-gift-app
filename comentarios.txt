@@ -3,3 +3,6 @@ Local Storage:persistencia a pesar de que se cierre en navegador
 Session Storage: se borra al cerrar el navegador
 cookies: viaja hacia el backend, comunicacion entre frontend y backend , headers de aplicacion
 
+inicializar despues de gitclone
+npm i
+ng serve -o
